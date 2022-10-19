@@ -16,9 +16,13 @@ DT2 <-DT[ , lapply(seq_len(length(f3_fields$Start)), function(ii) {
   stringi::stri_sub(V1, f3_fields$Start[ii], f3_fields$End[ii])
 })]
 
+names(DT2)<-f3_fields$`Field Name` # adding names
+
 DT2[,.N,by=prop_val_yr]# only one year of data available 2022
 
 DT2[,sum(grepl(pattern = "LLC",x = py_owner_name))] # total number of records with LLC in their name
 
 DT2[,.N,by=ht_exempt]# total number of records that have homestead exception claimed.  
+
+
 
